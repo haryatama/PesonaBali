@@ -5,7 +5,8 @@
 
     <dist:module dist:instant="true" />
 
-    <application
+    <application>
+<!--        MENGUBAH LOGO APP-->
         android:allowBackup="true"
         android:icon="@mipmap/logoapp"
         android:label="Pesona Bali"
