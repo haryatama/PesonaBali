@@ -16,7 +16,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.uasikinaja.R;
-
 public class WelcomeActivity extends AppCompatActivity {
 
         private ViewPager viewPager;
