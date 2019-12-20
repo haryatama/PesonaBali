@@ -2,9 +2,11 @@ package com.example.uasikinaja.Activity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,8 @@ import com.example.uasikinaja.Fragment.Wisatafragment;
 import com.example.uasikinaja.Model.SuperWisata;
 import com.example.uasikinaja.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +29,22 @@ import java.util.List;
 public class
 MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    RecyclerView rvSuperWisata;
-    List<SuperWisata> listSuperWisata = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         loadFragment (new Wisatafragment());
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-//        rvSuperWisata = findViewById(R.id.rvSuperWisata);
-//        SuperWisata wisata = new SuperWisata("Tanah Lot",R.drawable.tanahlot1);
-//        listSuperWisata.add(wisata);
-//        SuperWisataAdapter superWisataAdapter = new SuperWisataAdapter(listSuperWisata);
-//        rvSuperWisata.setAdapter(superWisataAdapter);
-//        rvSuperWisata.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private boolean loadFragment(Fragment fragment) {
